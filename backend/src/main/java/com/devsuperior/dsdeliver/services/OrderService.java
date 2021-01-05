@@ -46,5 +46,14 @@ public class OrderService {
 	}
 	
 	
+	@Transactional
+	public OrderDTO setDelireved(Long id) {		
+		Order order = repository.getOne(id);
+		order.setStatus(OrderStatus.DELEVERED);
+		order = repository.save(order);
+		return new OrderDTO(order); 
+	}
+	
+	
 	
 }
